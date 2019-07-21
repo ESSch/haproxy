@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # bash switch.sh bind_port port1 port2 ...
-#
+# bash switch.sh 80 127.0.0.1:19001 127.0.0.1:19002
 
 sed -i 's/bind \*:[0-9]*/bind \*:'$1'/g' haproxy_conf/haproxy.cfg
 
@@ -12,7 +12,7 @@ for i in $@; do
     then
         count=2;
     else
-        echo '    server web03 127.0.0.1:'$i' check' >> haproxy_conf/haproxy.cfg;
+        echo '    server web03 '$i' check' >> haproxy_conf/haproxy.cfg;
     fi
 done;
 
