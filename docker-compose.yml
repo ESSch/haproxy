@@ -1,0 +1,17 @@
+version: "3.0"
+
+services:
+  node-pool:
+    image: node:8
+    command: ["node", '/usr/src/server.js']
+    ports:
+      - 19000:9000
+      - 19001:9001
+      - 19002:9002
+    volumes:
+      - ./:/usr/src/
+  balancer:
+    image: haproxy:1.7
+    network_mode: host
+    volumes:
+      - ./haproxy_conf/:/usr/local/etc/haproxy:ro
