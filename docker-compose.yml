@@ -1,7 +1,7 @@
 version: "3.0"
 
 services:
-  node-pool:
+  node-pool: # for test
     image: node:8
     command: ["node", '/usr/src/server.js']
     ports:
