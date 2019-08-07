@@ -11,10 +11,12 @@ services:
     volumes:
       - ./:/usr/src/
   balancer:
-    image: haproxy:1.7
+    image: haproxy:1.7 # mminks/haproxy-docker-logging
     network_mode: host
     volumes:
       - ./haproxy_conf/:/usr/local/etc/haproxy:ro
+    ports:
+      - 19004:19004
   ui: # https://itsecforu.ru/2019/04/02/%E2%9C%94%EF%B8%8F-%D0%BA%D0%B0%D0%BA-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%82%D1%8C-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0%D0%BC%D0%B8-haproxy-%D0%B8%D0%B7-%D0%B2%D0%B5%D0%B1-%D0%B8/
     image: aidaho/haproxy-wi
     volumes:
